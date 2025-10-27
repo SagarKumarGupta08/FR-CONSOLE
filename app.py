@@ -6,9 +6,13 @@ import os
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
 
+from admin_login import admin_bp
+app.register_blueprint(admin_bp)
+
 # Admin credentials
 ADMIN_USERNAME = "FR Console"
-ADMIN_PASSWORD = "1"
+ADMIN_PASSWORD = "11"
+
 
 # JSONBin Config Paid Key
 JSONBIN_API_KEY = "$2a$10$1hGEnwMBNYMxDDpusWcYwuD/BD4GDq9oyvg/1DdqhkuubiuEanqgq"
