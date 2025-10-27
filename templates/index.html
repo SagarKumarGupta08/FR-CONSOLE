@@ -96,7 +96,7 @@
     </select>
   </div>
 
-  <!-- Add User -->
+  
   <div id="add" class="section active">
     <h4>➕ Add User</h4>
     <form onsubmit="addUser(event)">
@@ -107,7 +107,7 @@
     </form>
   </div>
 
-  <!-- Delete User -->
+
   <div id="delete" class="section">
     <h4>❌ Delete User</h4>
     <form onsubmit="deleteUser(event)">
@@ -116,7 +116,7 @@
     </form>
   </div>
 
-  <!-- Pause User -->
+
   <div id="pause" class="section">
     <h4>⏸️ Pause / Unpause User</h4>
     <form onsubmit="pauseUser(event, 'pause')">
@@ -126,7 +126,7 @@
     </form>
   </div>
 
-  <!-- Info User -->
+
   <div id="info" class="section">
     <h4>ℹ️ User Info</h4>
     <form onsubmit="infoUser(event)">
@@ -136,7 +136,7 @@
     <div id="infoPanel" class="mt-3"></div>
   </div>
 
-  <!-- Show Users -->
+
   <div id="show" class="section">
     <h4>📋 All Users</h4>
     <table class="table table-bordered user-table">
@@ -154,7 +154,6 @@
     </table>
   </div>
 
-  <!-- Reset HWID -->
   <div id="reset" class="section">
     <h4>🔄 Reset HWID</h4>
     <form onsubmit="resetHWID(event)">
@@ -164,12 +163,10 @@
       <button class="btn btn-dark">Reset HWID</button>
     </form>
   </div>
-
-<!-- Send Message -->
+  
 <div id="sendmsg" class="section">
   <h4>✉️ Send Message</h4>
 
-  <!-- Load Messages Form -->
   <form onsubmit="loadUserMessages(event)" class="mb-3">
     <div class="input-group">
       <input required type="text" class="form-control" placeholder="Enter Username" id="message_username">
@@ -177,7 +174,6 @@
     </div>
   </form>
 
-  <!-- Send Message Form -->
   <form onsubmit="sendMessage(event)" class="mb-3">
     <div class="mb-2">
       <textarea required class="form-control" rows="2" placeholder="Type your message..." id="message_text"></textarea>
@@ -185,13 +181,11 @@
     <button class="btn btn-primary">Send</button>
   </form>
 
-  <!-- Message List -->
   <div id="messageList" style="max-height: 400px; overflow-y: auto; border: 1px solid #ccc; padding: 10px; border-radius: 8px;">
     <!-- Messages will appear here -->
   </div>
 </div>
 
-<!-- Project Name -->
 <div id="project" class="section">
   <h4>📁 Project Name</h4>
   <div class="mb-3 position-relative">
@@ -225,7 +219,6 @@ else
     <button class="btn btn-sm btn-outline-light position-absolute top-0 end-0 m-2" onclick="copyCode()">📋</button>
   </div>
 
-  <!-- 👇 Styled Description and Developer Info -->
 <p class="developer">Developer: Sagar</p>
 <div style="margin-bottom: 12px;"></div>
 <a href="/static/HydraAuth.cs" download class="btn btn-success btn-sm">⬇️ Download HydraAuth.cs</a>
