@@ -126,7 +126,7 @@
       if(data.Admin && data.Admin.Username === username && data.Admin.Password === password) {
         alert("Login Success!"); 
         // Redirect to index.html or open site
-        window.location.href = "/";
+        window.location.href = "index.html";
       } else {
         const errDiv = document.getElementById("login-error");
         errDiv.textContent = "Invalid credentials";
