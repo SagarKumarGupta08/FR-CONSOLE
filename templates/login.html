@@ -2,112 +2,98 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Admin Login / Register</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <title>Admin Login | FR Console</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     body {
-      background-color: #f2f4f8;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #1a1a1a, #333);
+      color: white;
       display: flex;
       align-items: center;
       justify-content: center;
       height: 100vh;
+      margin: 0;
     }
-    .login-box {
-      background: white;
+    .container {
+      background: #222;
       padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+      width: 320px;
+      text-align: center;
+    }
+    h2 { margin-bottom: 15px; color: #00ffcc; }
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 8px;
+    }
+    button {
+      background: #00ffcc;
+      border: none;
+      padding: 10px;
       width: 100%;
-      max-width: 400px;
-    }
-    .login-box h3 {
+      border-radius: 8px;
+      color: black;
       font-weight: bold;
-    }
-    .toggle-link {
       cursor: pointer;
-      color: blue;
-      text-decoration: underline;
+    }
+    button:hover {
+      background: #00cc99;
+    }
+    .toggle {
+      margin-top: 10px;
+      color: #aaa;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .error {
+      color: red;
+      margin-bottom: 10px;
+      font-size: 14px;
     }
   </style>
 </head>
 <body>
-  <div class="login-box">
-    <h3 class="text-center text-primary mb-4" id="form-title">🔐 Admin Login</h3>
-    
-    <!-- Login Form -->
-    <form id="login-form">
-      <div class="mb-3">
-        <input id="login-username" type="text" class="form-control" placeholder="Username" required>
-      </div>
-      <div class="mb-3">
-        <input id="login-password" type="password" class="form-control" placeholder="Password" required>
-      </div>
-      <div id="login-error" class="alert alert-danger d-none"></div>
-      <button type="submit" class="btn btn-primary w-100">Login</button>
-      <p class="text-center mt-3">First time? <span class="toggle-link" onclick="showRegister()">Create Admin</span></p>
+
+  <div class="container">
+    <h2 id="form-title">Admin Login</h2>
+    <form id="loginForm" method="POST" action="/login">
+      {% if error %}
+        <div class="error">{{ error }}</div>
+      {% endif %}
+      <input type="text" name="username" placeholder="Username" required><br>
+      <input type="password" name="password" placeholder="Password" required><br>
+      <button type="submit">Login</button>
     </form>
 
-    <!-- Register Form -->
-    <form id="register-form" class="d-none">
-      <div class="mb-3">
-        <input id="register-username" type="text" class="form-control" placeholder="Username" required>
-      </div>
-      <div class="mb-3">
-        <input id="register-password" type="password" class="form-control" placeholder="Password" required>
-      </div>
-      <div id="register-error" class="alert alert-danger d-none"></div>
-      <button type="submit" class="btn btn-success w-100">Register</button>
-      <p class="text-center mt-3">Already registered? <span class="toggle-link" onclick="showLogin()">Login</span></p>
+    <!-- Register form -->
+    <form id="registerForm" method="POST" action="/register" style="display: none;">
+      <input type="text" name="username" placeholder="New Username" required><br>
+      <input type="password" name="password" placeholder="New Password" required><br>
+      <button type="submit">Register</button>
     </form>
+
+    <div class="toggle" onclick="toggleForm()">Don’t have an account? Register</div>
   </div>
 
   <script>
-    // JSONBin config
-    const JSONBIN_API_KEY = "$2a$10$VIzmNWXxdrqD5iAxo9wH2uPM7q4J2x84X5TTNCn6LWWcMUMRhxDFy";
-    const BIN_ID = "68fee10aae596e708f2f4ffb";
-    const HEADERS = {
-      "Content-Type": "application/json",
-      "X-Master-Key": JSONBIN_API_KEY
-    };
-
-    const loginForm = document.getElementById("login-form");
-    const registerForm = document.getElementById("register-form");
-    const formTitle = document.getElementById("form-title");
-
-    // Toggle forms
-    function showRegister() {
-      loginForm.classList.add("d-none");
-      registerForm.classList.remove("d-none");
-      formTitle.textContent = "📝 Register Admin";
+    let showRegister = false;
+    function toggleForm() {
+      showRegister = !showRegister;
+      document.getElementById("loginForm").style.display = showRegister ? "none" : "block";
+      document.getElementById("registerForm").style.display = showRegister ? "block" : "none";
+      document.getElementById("form-title").innerText = showRegister ? "Register Admin" : "Admin Login";
+      document.querySelector(".toggle").innerText = showRegister
+        ? "Already have an account? Login"
+        : "Don’t have an account? Register";
     }
-    function showLogin() {
-      registerForm.classList.add("d-none");
-      loginForm.classList.remove("d-none");
-      formTitle.textContent = "🔐 Admin Login";
-    }
-
-    // Fetch JSONBin data
-    async function fetchData() {
-      try {
-        const res = await fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}/latest`, {
-          method: "GET",
-          headers: HEADERS
-        });
-        const json = await res.json();
-        return json.record || {};
-      } catch(err) {
-        console.error(err);
-        return {};
-      }
-    }
-
-    // Save JSONBin data
-    async function saveData(data) {
-      try {
-        const res = await fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}`, {
-          method: "PUT",
-          headers: HEADERS,
-          body: JSON.stringify(data)
+  </script>
+</body>
+</html>          body: JSON.stringify(data)
         });
         return res.ok;
       } catch(err) {
