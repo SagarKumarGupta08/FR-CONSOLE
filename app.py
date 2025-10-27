@@ -12,7 +12,7 @@ ADMIN_PASSWORD = "3050"
 
 # JSONBin Config
 JSONBIN_API_KEY = "$2a$10$1hGEnwMBNYMxDDpusWcYwuD/BD4GDq9oyvg/1DdqhkuubiuEanqgq"
-BIN_ID = "6857a2818960c979a5aee560"
+BIN_ID = "68fe228fd0ea881f40bd3bc4"
 
 HEADERS = {
     "Content-Type": "application/json",
