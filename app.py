@@ -10,7 +10,7 @@ app.secret_key = os.urandom(24)
 ADMIN_USERNAME = "RTX"
 ADMIN_PASSWORD = "3050"
 
-# JSONBin Config
+# JSONBin Config Paid Key
 JSONBIN_API_KEY = "$2a$10$1hGEnwMBNYMxDDpusWcYwuD/BD4GDq9oyvg/1DdqhkuubiuEanqgq"
 BIN_ID = "68fe228fd0ea881f40bd3bc4"
 
