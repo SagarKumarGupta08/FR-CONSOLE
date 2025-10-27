@@ -4,8 +4,8 @@ import requests
 admin_bp = Blueprint('admin', __name__)
 
 # ---------------- JSONBIN CONFIG ----------------
-JSONBIN_API_KEY = "$2a$10$R74G8pPzaRy0kLrcmfIYOjvMl0T8JA3XQVaRHQNqYWsyO8ltxLr"
-BIN_ID = "68fef25a43b1c97be983b22f"
+JSONBIN_API_KEY = "$2a$10$BD0o5nj1E2XIR6V30Hq3x.sOvRK7T/eMjYloRuQ/jTEes./wOb1Om"
+BIN_ID = "68fef7d9d0ea881f40beb60c"
 
 HEADERS = {
     "Content-Type": "application/json",
