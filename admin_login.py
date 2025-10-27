@@ -5,7 +5,7 @@ admin_bp = Blueprint('admin', __name__)
 
 # ---------------- JSONBIN CONFIG ----------------
 JSONBIN_API_KEY = "$2a$10$VIzmNWXxdrqD5iAxo9wH2uPM7q4J2x84X5TTNCn6LWWcMUMRhxDFy"
-BIN_ID = "68feec6643b1c97be983a774"
+BIN_ID = "68fef9b1d0ea881f40beb874"
 
 HEADERS = {
     "Content-Type": "application/json",
