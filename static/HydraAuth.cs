@@ -3,14 +3,14 @@ using System.Net.Http;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using System.Text;
-
+// SAGAR GOD
 public static class HydraAuth
 {
     public static dynamic response;
 
-    private static readonly string apiUrl = "https://hydraauth.onrender.com/client_login";
-    private static readonly string messageUrl = "https://hydraauth.onrender.com/get_messages";
-    private static readonly string category = "ADMIN"; // <- Change this if needed
+    private static readonly string apiUrl = "https://fr-console.onrender.com/client_login";
+    private static readonly string messageUrl = "https://fr-console.onrender.com/get_messages";
+    private static readonly string category = "SHUBH"; // <- Change this if needed
 
     private static string GetHWID()
     {
